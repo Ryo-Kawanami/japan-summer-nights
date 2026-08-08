@@ -1,0 +1,11 @@
+{
+  // 静的アセットだけを配信する Worker。サーバー側のコードは無い。
+  // Next.js の output:"export" が吐いた ./out をそのまま置く。
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "japan-summer-nights",
+  "compatibility_date": "2026-07-26",
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  }
+}

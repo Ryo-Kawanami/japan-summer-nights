@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+/*
+ * 配色は data-viz の既定パレットに合わせる。
+ * ライトとダークは自動反転ではなく、それぞれのサーフェス向けに選んだ段を使う。
+ */
+:root {
+  color-scheme: light;
+  --surface-1: #fcfcfb;
+  --text-primary: #0b0b0b;
+  --text-secondary: #52514e;
+  --rule: #dedcd6;
+  --grid: #e8e6e0;
+  --series-1: #2a78d6; /* パレットのスロット1（青） */
+  --series-2: #eb6834; /* パレットのスロット2（橙） */
+  --series-3: #1baf7a; /* パレットのスロット3（アクア） */
+  /* 色は「意味のカテゴリ」に割り当てる。指標ごとに色を増やすと、
+     別の量に似た色が付いて無い関係を示唆してしまう。
+     昼は太陽、夜は月。人にとっての量（体感温度・熱中症）は第3の意味なので別色。
+     この3色はパレットが全組み合わせで検証済みの組。
+     地図の温度グラデーションとは無関係で、こちらは凡例の色分けだけ。 */
+  --day: var(--series-2);
+  --night: var(--series-1);
+  --human: var(--series-3);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --surface-1: #1a1a19;
+    --text-primary: #ffffff;
+    --text-secondary: #c3c2b7;
+    --rule: #3a3a37;
+    --grid: #2e2e2b;
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --series-3: #199e70;
+    --day: var(--series-2);
+    --night: var(--series-1);
+    --human: var(--series-3);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface-1: #1a1a19;
+  --text-primary: #ffffff;
+  --text-secondary: #c3c2b7;
+  --rule: #3a3a37;
+  --grid: #2e2e2b;
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --day: var(--series-2);
+  --night: var(--series-1);
+  --human: var(--series-3);
+}
+
+body {
+  background: var(--surface-1);
+  color: var(--text-primary);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Hiragino Sans",
+    "Noto Sans JP", "Yu Gothic UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 広い表やグラフがはみ出しても、ページ本体は横スクロールさせない。 */
+html,
+body {
+  overflow-x: hidden;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

@@ -1,0 +1,16 @@
+[project]
+name = "japan-summer-nights"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "jaxa-earth>=0.1.6",
+    "numpy>=2.5.1",
+    "openpyxl>=3.1.5",
+    "pillow>=12.3.0",
+    "scikit-learn>=1.9.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]

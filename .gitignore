@@ -1,0 +1,15 @@
+node_modules/
+.next/
+out/
+__pycache__/
+.venv/
+.DS_Store
+
+# Next.js
+web/out/
+web/.next/
+web/node_modules/
+
+# 取得済みグリッド（約40MB。pipeline/fetch.py で再取得できるが20分ほどかかる）
+pipeline/geo/japan.geojson
+pipeline/cache/
